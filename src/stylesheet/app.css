@@ -1,0 +1,65 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  background: #000;
+  background: url(../images/alex-turner-no-tegel.jpg) repeat;
+  
+}
+
+.YSIBN__container {
+  padding: 15px;
+  height: 100vh;
+}
+
+.YSIBN__container--centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.YSIBN__box {
+  width: 600px;
+  padding: 15px;
+  background: #f1c40f;
+  border-radius: 3px;
+  align-self: center;
+}
+
+.YSIBN__title {
+  margin-bottom: 15px;
+}
+
+.YSIBN__description {
+  line-height: 1.4;
+  word-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.YSIBN__generated-name {
+  display: block;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.YSIBN__button {
+  background: #000;
+  border: 0;
+  border-radius: 3px;
+  display: block;
+  padding: 15px;
+  width: 100%;
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.3s ease all;
+}
