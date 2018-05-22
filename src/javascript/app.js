@@ -1,18 +1,18 @@
 {
   const app = () => {
     
-    words = null
+    let words = null
     
     /**
-     * [getWords description]
-     * @param  {[type]} countryAcronym [description]
-     * @return {Promise}                [description]
+     * Get all the words from the JSON file.
+     * @param  {String} countryAcronym String containing the country acronym
+     * @return {Promise} a list of all the words based on the country
      */
-    const getWords = countryAcronym => {
+    const getWords = countryAcronym = 'BR' => {
         if (! words) {
           return fetch('resources/words.json')
             .then(response => response.json())
-            .then(words => words = words['BR'].words)
+            .then(words => words = words[countryAcronym].words)
             .catch(err => {
               throw new Error('(getWords) unable  to get words.json', err)
             })
@@ -21,9 +21,9 @@
         }
     } 
     /**
-     * [getWordCombination description]
-     * @param  {Array} words [description]
-     * @return {Promise}       [description]
+     * Generates a random combination based on the name's list provided.
+     * @param  {Array} words all the available words.
+     * @return {Promise} Promise containing the generated words.
      */
     const getWordCombination = words => {
        let firstPiece = words[Math.floor(Math.random() * words.length)]
@@ -35,8 +35,8 @@
     }
     
     /**
-     * [render description]
-     * @return {[type]} [description]
+     * Display the name on the screen.
+     * @param  {Object} wordCombination the two words combined.
      */
     const render = wordCombination => {
         const {firstPiece, lastPiece} = wordCombination
@@ -44,14 +44,12 @@
             .innerText = `${firstPiece} ${lastPiece}` 
     }
     
-    /**
-     * [init description]
-     * @return {[type]} [description]
+    /** 
+     * Callback that gets called when the user 
+     * hit the generate button.
      */
     const generateStupidName = () => {
-        console.log('Application started.')
-      
-        fetch('resources/words.json')
+        return fetch('resources/words.json')
           .then(getWords)
           .then(getWordCombination)
           .then(render)
@@ -60,9 +58,12 @@
           })
     }
     
+    console.log('Application started.')
+    
     document.querySelector('.YSIBN__button')
         .addEventListener('click', generateStupidName)
   }
   
+  // kick off the app
   document.addEventListener('DOMContentLoaded', app)
 }
